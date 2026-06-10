@@ -1,104 +1,134 @@
-# Mohammed Sahil — Portfolio (v7)
+# Mohammed Sahil Portfolio
 
-Data Science / AI Engineering portfolio. React + Vite + Tailwind, deployed on Vercel.
+Personal portfolio website for **Mohammed Sahil**, showcasing work across data science, analytics, business intelligence, AI/ML evaluation, NLP, dashboards, and leadership.
 
-**New in v7:** SahilAI assistant (RAG-style, with optional Claude LLM upgrade), Vercel Analytics with custom event tracking, working contact form, phone contact, Generative AI & LLMs skill category.
+## Overview
 
----
+This portfolio highlights my background as a Data Science and Analytics professional with experience in:
 
-## Quick start
+* SQL and Python-based analytics workflows
+* Business intelligence dashboards and KPI reporting
+* AI/ML evaluation and validation frameworks
+* NLP and responsible AI projects
+* Data visualization and stakeholder-facing reporting
+* Leadership through TEDxIllinois Tech and community-focused initiatives
+
+The site is built to present my projects, experience, achievements, and technical skill set in a clean, interactive, recruiter-friendly format.
+
+## Live Portfolio
+
+[View Portfolio](https://sahil-portfolio-three-omega.vercel.app/)
+
+## Tech Stack
+
+* React
+* Vite
+* Tailwind CSS
+* JavaScript
+* Vercel
+
+## Key Sections
+
+* **Hero & Analytics Snapshot** — quick overview of my profile, focus areas, and portfolio metrics
+* **Interactive Dashboards** — visual previews of analytics, BI, and AI evaluation work
+* **Projects** — featured work across analytics, AI/ML, BI, data engineering, and research
+* **Experience** — professional timeline across data, AI, analytics, and customer-facing technical roles
+* **Leadership & Impact** — TEDxIllinois Tech, SoReMo Fellowship, and community-centered initiatives
+* **Achievements** — academic awards, certifications, and recognitions
+* **Skills** — categorized technical skill stack across analytics, BI, ML/AI, data engineering, and business analytics
+* **Contact** — direct ways to connect for opportunities and collaboration
+
+## Featured Work
+
+### MindBridgeAI
+
+An NLP and responsible AI project focused on culturally intelligent mental health support, survey analytics, and engagement insights.
+
+### Dream Engine / XYN Analytics Framework
+
+Analytics and validation framework for evaluating AI system outputs, monitoring performance, and supporting product strategy.
+
+### WNDR Museum Analytics Dashboard
+
+Business analytics dashboard integrating visitor behavior, ticketing, sentiment, and KPI reporting to support marketing and planning decisions.
+
+### Community Engagement Research Analytics
+
+Research analytics work analyzing university-community initiatives and developing structured reports for institutional decision-making.
+
+## Leadership Highlights
+
+* Founder & Lead Organizer — TEDxIllinois Tech
+* SoReMo Fellow — MindBridgeAI Project
+* Graduate Pathway Scholarship recipient
+* Outstanding First Year Involvement Award
+* Clinton E. Stryker Award
+* VTU Mathematics Gold Medalist
+* National Merit Scholarship recipient
+
+## Getting Started
+
+Clone the repository and install dependencies:
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run build    # production build → /dist
 ```
 
-Deploy: push to the GitHub repo connected to Vercel. Auto-detects Vite. No config changes.
+Run the development server:
 
----
-
-## 1 · Visitor analytics (see who's visiting — setup: 2 minutes)
-
-The site ships with `@vercel/analytics` already wired in. To activate:
-
-1. Go to your project on **vercel.com → Analytics tab → Enable**
-2. Redeploy (push any commit)
-3. Done. Data appears within minutes.
-
-**What you'll see (private to you):** page views, unique visitors, countries, cities, devices, browsers, referrers (e.g., "came from LinkedIn"), and **custom events**:
-
-| Event | Fires when |
-|---|---|
-| `resume_download` | Someone downloads your resume (hero or contact) |
-| `email_click` / `phone_click` | Someone clicks your email/phone |
-| `linkedin_click` / `github_click` | Outbound profile clicks |
-| `assistant_open` | Someone opens SahilAI |
-| `assistant_question` | A question is asked (first 80 chars logged) |
-| `contact_form_submit` | The contact form is submitted |
-
-**Honest limits:** No website can tell you the *name* of an anonymous visitor — browsers don't expose identity. What you CAN do:
-
-- **UTM-tag your links per application.** When you apply to, say, Uber, put this link on that resume/application: `https://your-site.vercel.app/?utm_source=uber-analyst-app`. Vercel Analytics shows referrer/UTM breakdowns — so when you see a visit from `uber-analyst-app`, you know that recruiter opened it. Make one tag per application.
-- The contact form and SahilAI questions are the moments visitors *identify themselves* — both are tracked.
-
-(Optional alternative: Google Analytics 4 gives more depth but adds cookie-consent complexity. Vercel Analytics is cookieless and privacy-clean — better for a portfolio.)
-
----
-
-## 2 · Contact form (direct email — setup: 3 minutes)
-
-The form currently falls back to opening the visitor's mail client (always works). To make it send straight to your inbox silently:
-
-1. Create a free account at **formspree.io** → New Form → use your email `mohammedsahil786sz@gmail.com`
-2. Copy your form ID (looks like `xqkrwyab`)
-3. In `src/components/Contact.jsx`, replace `YOUR_FORM_ID` in:
-   ```js
-   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
-   ```
-4. Commit + push. Done — 50 free submissions/month, spam-filtered.
-
----
-
-## 3 · SahilAI assistant
-
-Works out of the box: a client-side RAG pipeline (chunking → retrieval → ranked synthesis) over your portfolio content in `src/data/content.js`. Update content there and the assistant's knowledge updates automatically. Zero cost, zero API keys, never breaks.
-
-**Optional: upgrade to a real Claude-powered chat (setup: 5 minutes)**
-
-1. Get an API key at **console.anthropic.com**
-2. On Vercel: **Project → Settings → Environment Variables** → add `ANTHROPIC_API_KEY`
-3. Redeploy. The widget detects `/api/chat` automatically and upgrades; without the key it silently falls back to local retrieval.
-
-Cost control: the function uses Claude Haiku capped at 500 output tokens (~$0.001–0.003 per question). Even 500 recruiter questions ≈ a dollar or two. The system prompt grounds answers in your real facts only and forbids inventing credentials or discussing visa status.
-
----
-
-## 4 · File placement
-
-| Asset | Path |
-|---|---|
-| Resume | `/public/Mohammed-Sahil-Resume.pdf` (bundled) |
-| Profile photo | `/public/profile.jpg` (bundled) |
-| Dashboard screenshots (later) | `/public/dashboards/*.png` |
-| All copy/content | `src/data/content.js` — single source of truth |
-| Assistant knowledge | auto-generated from `content.js` (`src/lib/assistantEngine.js`) |
-| Serverless LLM endpoint | `/api/chat.js` |
-
----
-
-## Structure
-
+```bash
+npm run dev
 ```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```text
 portfolio-v2/
 ├── api/
-│   └── chat.js                  ← optional Claude-powered endpoint
-├── public/                      ← resume, profile.jpg, favicon
+├── public/
+│   ├── Mohammed-Sahil-Resume.pdf
+│   └── profile.jpg
 └── src/
-    ├── data/content.js          ← ALL copy lives here
+    ├── components/
+    ├── data/
+    ├── hooks/
     ├── lib/
-    │   ├── analytics.js         ← event tracking helper
-    │   └── assistantEngine.js   ← SahilAI retrieval engine
-    ├── hooks/                   ← useReveal, useCountUp, useTheme, useActiveSection
-    └── components/              ← 20 components incl. PortfolioAssistant
+    ├── App.jsx
+    └── main.jsx
 ```
+
+## Deployment
+
+This project is deployed on Vercel.
+
+Recommended Vercel settings:
+
+```text
+Framework Preset: Vite
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+```
+
+## Contact
+
+**Mohammed Sahil**
+Chicago, IL
+Email: [mohammedsahil786sz@gmail.com](mailto:mohammedsahil786sz@gmail.com)
+LinkedIn: [Mohammed Sahil](https://www.linkedin.com/in/mohammed-sahil-d2d15/)
+
+---
+
+Thank you for visiting my portfolio.
