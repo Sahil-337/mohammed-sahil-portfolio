@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink-800 font-sans antialiased;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.dark body {
+  @apply bg-night-900 text-ink-100;
+}
+
+::selection {
+  background-color: #0B6E4F;
+  color: #FAFAF7;
+}
+
+/* Display font tuning — Fraunces optical-size aware */
+.font-display {
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 0;
+  letter-spacing: -0.022em;
+}
+
+/* Hero grid background */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(11, 18, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 18, 32, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+}
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+}
+
+/* Aurora glow behind hero */
+.aurora {
+  position: absolute;
+  inset: -20% auto auto -10%;
+  width: 50rem;
+  height: 50rem;
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.18), transparent 60%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: -2;
+}
+.aurora-2 {
+  position: absolute;
+  inset: 30% -10% auto auto;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle at center, rgba(11, 110, 79, 0.12), transparent 60%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ─── Typography helpers ─── */
+.section-label {
+  @apply text-xs font-medium uppercase tracking-[0.18em] text-ink-500;
+}
+.dark .section-label {
+  @apply text-ink-300;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #0B6E4F 0%, #10B981 50%, #0B6E4F 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientPan 8s ease infinite;
+}
+.dark .gradient-text {
+  background: linear-gradient(120deg, #10B981 0%, #34D399 50%, #10B981 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientPan 8s ease infinite;
+}
+
+/* ─── Components ─── */
+.chip {
+  @apply inline-flex items-center rounded-full border border-ink-900/10 bg-white px-3 py-1 text-xs font-medium text-ink-700;
+}
+.dark .chip {
+  @apply border-white/10 bg-night-700 text-ink-200;
+}
+
+.chip-accent {
+  @apply inline-flex items-center rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-medium text-accent;
+}
+.dark .chip-accent {
+  @apply border-accent-glow/30 bg-accent-glow/10 text-accent-glow;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-ink-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+}
+.dark .btn-primary {
+  @apply bg-accent-glow text-night-900 hover:bg-accent;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border border-ink-900/15 bg-white px-5 py-2.5 text-sm font-medium text-ink-800 transition hover:border-ink-900/30 hover:bg-ink-900/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+}
+.dark .btn-secondary {
+  @apply border-white/15 bg-night-700 text-ink-100 hover:border-white/30 hover:bg-night-600;
+}
+
+.input-base {
+  @apply w-full rounded-xl border border-ink-900/10 bg-paper px-4 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 transition focus:border-accent focus:outline-none;
+}
+.dark .input-base {
+  @apply border-white/10 bg-night-900/50 text-ink-100 placeholder:text-ink-400 focus:border-accent-glow;
+}
+
+.card {
+  @apply rounded-2xl border border-ink-900/10 bg-white p-6 transition;
+}
+.dark .card {
+  @apply border-white/10 bg-night-800;
+}
+
+.card-hover {
+  @apply hover:border-ink-900/20 hover:shadow-[0_8px_28px_-12px_rgba(11,18,32,0.18)];
+}
+.dark .card-hover {
+  @apply hover:border-white/20 hover:shadow-[0_8px_28px_-12px_rgba(0,0,0,0.7)];
+}
+
+.tab-btn {
+  @apply rounded-full border border-ink-900/10 bg-white px-3.5 py-1.5 text-xs font-medium text-ink-700 transition hover:border-ink-900/25;
+}
+.dark .tab-btn {
+  @apply border-white/10 bg-night-700 text-ink-200 hover:border-white/25;
+}
+.tab-btn-active {
+  @apply border-transparent bg-ink-900 text-paper hover:border-transparent;
+}
+.dark .tab-btn-active {
+  @apply bg-accent-glow text-night-900;
+}
+
+.strength {
+  @apply inline-flex items-center rounded-md px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider;
+}
+.strength-Core { @apply bg-accent text-paper; }
+.strength-Strong { @apply bg-accent/15 text-accent; }
+.strength-Working { @apply bg-ink-900/10 text-ink-700; }
+.strength-Familiar { @apply bg-ink-900/5 text-ink-500; }
+.dark .strength-Strong { @apply bg-accent-glow/20 text-accent-glow; }
+.dark .strength-Working { @apply bg-white/10 text-ink-200; }
+.dark .strength-Familiar { @apply bg-white/5 text-ink-300; }
+
+/* Typewriter cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Spotlight (cursor-following radial glow) */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--x, 50%) var(--y, 50%),
+    rgba(11, 110, 79, 0.10),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.dark .spotlight::before {
+  background: radial-gradient(
+    320px circle at var(--x, 50%) var(--y, 50%),
+    rgba(16, 185, 129, 0.12),
+    transparent 40%
+  );
+}
+.spotlight:hover::before { opacity: 1; }
+.spotlight > * { position: relative; z-index: 1; }
+
+/* Scroll reveal — uses IntersectionObserver to add .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Marquee for tech logos */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* Animated link underline */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
